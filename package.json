@@ -2,9 +2,10 @@
   "name": "local-api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "tsc --watch --preserveWatchOutput"
   },
   "repository": {
     "type": "git",
@@ -16,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/NightClover-code/web-cli-app/issues"
   },
-  "homepage": "https://github.com/NightClover-code/web-cli-app#readme"
+  "homepage": "https://github.com/NightClover-code/web-cli-app#readme",
+  "devDependencies": {
+    "typescript": "^4.2.2"
+  }
 }
