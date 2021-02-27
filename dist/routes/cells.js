@@ -41,10 +41,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.createCellsRouter = void 0;
 var express_1 = __importDefault(require("express"));
+var promises_1 = __importDefault(require("fs/promises"));
+var path_1 = __importDefault(require("path"));
 //exporting router function
 var createCellsRouter = function (filename, dir) {
     //using router
     var router = express_1.default.Router();
+    var fullPath = path_1.default.join(dir, filename);
     //routes
     router.get('/cells', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
         return __generator(this, function (_a) {
@@ -52,8 +55,20 @@ var createCellsRouter = function (filename, dir) {
         });
     }); });
     router.post('/cells', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+        var cells;
         return __generator(this, function (_a) {
-            return [2 /*return*/];
+            switch (_a.label) {
+                case 0:
+                    cells = req.body.cells;
+                    //write cells into a file
+                    return [4 /*yield*/, promises_1.default.writeFile(fullPath, JSON.stringify(cells), 'utf-8')];
+                case 1:
+                    //write cells into a file
+                    _a.sent();
+                    //sending response
+                    res.send({ status: 'ok' });
+                    return [2 /*return*/];
+            }
         });
     }); });
     return router;
