@@ -10,6 +10,8 @@ export const serve = (
   useProxy: boolean
 ) => {
   const app = express();
+  //using router
+  app.use(createCellsRouter(filename, dir));
   if (useProxy) {
     //adding a proxy
     app.use(
@@ -24,8 +26,6 @@ export const serve = (
     const packagePath = require.resolve('local-client/build/index.html');
     app.use(express.static(path.dirname(packagePath)));
   }
-  //using router
-  app.use(createCellsRouter(filename, dir));
   //wrapping express into a promise
   return new Promise<void>((resolve, reject) => {
     app.listen(port, resolve).on('error', reject);

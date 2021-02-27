@@ -11,6 +11,8 @@ var cells_1 = require("./routes/cells");
 //serve
 var serve = function (port, filename, dir, useProxy) {
     var app = express_1.default();
+    //using router
+    app.use(cells_1.createCellsRouter(filename, dir));
     if (useProxy) {
         //adding a proxy
         app.use(http_proxy_middleware_1.createProxyMiddleware({
@@ -24,8 +26,6 @@ var serve = function (port, filename, dir, useProxy) {
         var packagePath = require.resolve('local-client/build/index.html');
         app.use(express_1.default.static(path_1.default.dirname(packagePath)));
     }
-    //using router
-    app.use(cells_1.createCellsRouter(filename, dir));
     //wrapping express into a promise
     return new Promise(function (resolve, reject) {
         app.listen(port, resolve).on('error', reject);
