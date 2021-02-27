@@ -47,6 +47,8 @@ var path_1 = __importDefault(require("path"));
 var createCellsRouter = function (filename, dir) {
     //using router
     var router = express_1.default.Router();
+    //parsing
+    router.use(express_1.default.json());
     var fullPath = path_1.default.join(dir, filename);
     //routes
     router.get('/cells', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
