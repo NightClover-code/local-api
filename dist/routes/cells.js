@@ -61,7 +61,7 @@ var createCellsRouter = function (filename, dir) {
                 case 1:
                     result = _a.sent();
                     //sending results
-                    res.send(JSON.parse(result));
+                    res.send(result);
                     return [3 /*break*/, 6];
                 case 2:
                     err_1 = _a.sent();
