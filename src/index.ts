@@ -23,7 +23,9 @@ export const serve = (
     );
   } else {
     //finding index.html path
-    const packagePath = require.resolve('local-client/build/index.html');
+    const packagePath = require.resolve(
+      '@web-code-cli/local-client/build/index.html'
+    );
     app.use(express.static(path.dirname(packagePath)));
   }
   //wrapping express into a promise

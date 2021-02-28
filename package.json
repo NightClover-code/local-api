@@ -1,11 +1,15 @@
 {
-  "name": "local-api",
+  "name": "@web-code-cli/local-api",
   "version": "1.0.0",
   "description": "",
+  "files": [
+    "dist"
+  ],
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "start": "tsc --watch --preserveWatchOutput"
+    "start": "tsc --watch --preserveWatchOutput",
+    "prepublishOnly": "tsc"
   },
   "repository": {
     "type": "git",
@@ -17,6 +21,9 @@
   "bugs": {
     "url": "https://github.com/NightClover-code/web-cli-app/issues"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "homepage": "https://github.com/NightClover-code/web-cli-app#readme",
   "devDependencies": {
     "@types/cors": "^2.8.10",
@@ -27,6 +34,6 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "http-proxy-middleware": "^1.0.6",
-    "local-client": "^0.1.0"
+    "@web-code-cli/local-client": "^0.1.0"
   }
 }

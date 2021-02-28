@@ -23,7 +23,7 @@ var serve = function (port, filename, dir, useProxy) {
     }
     else {
         //finding index.html path
-        var packagePath = require.resolve('local-client/build/index.html');
+        var packagePath = require.resolve('@web-code-cli/local-client/build/index.html');
         app.use(express_1.default.static(path_1.default.dirname(packagePath)));
     }
     //wrapping express into a promise
